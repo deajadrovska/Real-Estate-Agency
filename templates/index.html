@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class=" row">
+        <div class="col-6">
+            <h1 class="" style="width: fit-content; margin-top: 200px; margin-left: 150px">Architecture<br>Bureau</h1>
+           
+        </div>
+    <div class="col-6">
+        <img src="{% static 'house.jpg' %}" class="p-5">
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <img src="{% static 'house2.jpg' %}" class="ps-5 ms-5">
+        </div>
+        <div class="col-3 mt-5">
+            <p class="text-secondary" >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        </div>
+    </div>
+    
+    
+    <div class="container mt-5">
+        <h1 class="text-center text-dark fw-bold mb-5">We offer variety of projects</h1>
+        <div class="container tabs-container mb-5">
+            <ul id="submenu" class="row list-unstyled text-center">
+                <li class="col-4">All houses</li>
+                <li class="col-4 text-muted">Store houses</li>
+                <li class="col-4 text-muted">Frame houses</li>
+            </ul>
+        </div>
+        <div class="row">
+        {% for property in properties %}
+            <div class="col-4">
+            
+            
+            <div class="card  bg-light-subtle" style="width: 18rem;">
+                <img class="card-img-top" src="{{property.image.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ property.name}}</h5>
+                    <p class="card-text">Area <span class="text-light">area of the    house</span>{{ property.area }}sqm</p>
+                    <hr>
+                    <p class="card-text">Price <span class="text-light">area   of   the    house</span>5432 $</p>
+{#                    TODO: ADD THE LINK FOR EDIT#}
+                    <a href="{% url 'edit' property.id %}" class="btn btn-dark rounded-0">Edit</a>
+                </div>
+            </div>
+            </div>
+            
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+

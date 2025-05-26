@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class=" row">
+        <div class="col-6">
+            <h1 class="" style="width: fit-content; margin-top: 200px; margin-left: 150px">EDIT: {{ house.name }}</h1>
+
+        </div>
+        <div class="col-6">
+            <img src="{{ house.image.url }}" class="p-5">
+        </div>
+    </div>
+    
+    
+    <div class="container-fluid p-5">
+        <form method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-dark w-100">Submit</button>
+        </form>
+    </div>
+    
+    
+{% endblock %}
